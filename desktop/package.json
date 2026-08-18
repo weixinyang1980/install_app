@@ -1,0 +1,33 @@
+{
+  "name": "zhuang-le-ma",
+  "version": "1.0.0",
+  "description": "今天你装了吗？",
+  "main": "electron/main.cjs",
+  "author": "装了吗",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on http-get://127.0.0.1:5173 && electron .\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1",
+    "lucide-react": "^0.503.0",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "electron": "^36.2.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.3.4",
+    "wait-on": "^8.0.3"
+  }
+}

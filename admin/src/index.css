@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+body {
+  background: #0e2a3a;
+  color: #fffaf3;
+  font-family: "Noto Sans SC", system-ui, sans-serif;
+}
