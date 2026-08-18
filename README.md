@@ -56,16 +56,3 @@ npm run dev
 ```
 
 Windows 也可以直接跑仓库根目录的 `start.ps1`。
-
-## 版本号为什么不会再报「找不到匹配的版本」
-
-winget 不吃 `17.4` 这种短号。本系统会：
-
-1. 从 nodejs.org / PyPI / Adoptium / endoflife.date 等源拉**真实版本**
-2. 预置软件用经过核对的 **winget 精确 ID**（版本写在 ID 里，例如 `EclipseAdoptium.Temurin.17.JDK`）
-3. 脚本内置 `Install-ZlmWinget`：先在本机解析完整版本，对不上就装该包默认最新版，**绝不把短号传给 `--version`**
-4. Node / Python / Go 指定完整版本时改走官方 MSI/EXE，不赌 winget 版本表
-
-## AI
-
-预置软件的安装脚本以配方为准，AI 负责把说明写完整。没见过的软件才整份交给 AI，并自动给 Windows 脚本套上安全安装函数。
