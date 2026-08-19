@@ -6,6 +6,16 @@
 
 许可证：[MIT](LICENSE)
 
+## 线上地址
+
+| 用途 | 地址 |
+| --- | --- |
+| Windows 安装包目录 | [`desktop/release/`](desktop/release/) |
+| 安装版（推荐） | [`ZhuangLeMa-Setup-1.0.0.exe`](desktop/release/ZhuangLeMa-Setup-1.0.0.exe) |
+| 绿色免安装版 | [`ZhuangLeMa-Portable-1.0.0.exe`](desktop/release/ZhuangLeMa-Portable-1.0.0.exe) |
+| 管理后台 | https://zhuang-le-ma-admin-hq2jfcoe.edgeone.cool/ |
+| API 后端 | https://backend-five-nu-19.vercel.app/ |
+
 ## 三件套
 
 | 目录 | 作用 | 默认地址 |
@@ -56,3 +66,37 @@ npm run dev
 ```
 
 Windows 也可以直接跑仓库根目录的 `start.ps1`。
+
+## Windows 桌面版（给别人用）
+
+安装包连的是线上后端，对方电脑**不用**再开 FastAPI。64 位 Windows 10 / 11。
+
+本地打好的文件在 `desktop/release/`：
+
+| 文件 | 给谁 |
+| --- | --- |
+| `ZhuangLeMa-Setup-1.0.0.exe` | 推荐。安装向导，会建桌面和开始菜单快捷方式 |
+| `ZhuangLeMa-Portable-1.0.0.exe` | 不想安装、U 盘带走时用 |
+
+重新打包：
+
+```powershell
+cd desktop
+npm install
+npm run dist
+```
+
+未签名时，Windows 可能弹出 SmartScreen「无法验证发布者」：点 **更多信息** → **仍要运行**。
+
+## 版本号为什么不会再报「找不到匹配的版本」
+
+winget 不吃 `17.4` 这种短号。本系统会：
+
+1. 从 nodejs.org / PyPI / Adoptium / endoflife.date 等源拉**真实版本**
+2. 预置软件用经过核对的 **winget 精确 ID**（版本写在 ID 里，例如 `EclipseAdoptium.Temurin.17.JDK`）
+3. 脚本内置 `Install-ZlmWinget`：先在本机解析完整版本，对不上就装该包默认最新版，**绝不把短号传给 `--version`**
+4. Node / Python / Go 指定完整版本时改走官方 MSI/EXE，不赌 winget 版本表
+
+## AI
+
+预置软件的安装脚本以配方为准，AI 负责把说明写完整。没见过的软件才整份交给 AI，并自动给 Windows 脚本套上安全安装函数。
